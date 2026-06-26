@@ -134,24 +134,33 @@ public class ArvoreBinaria<T> {
         }
         return buscar(atual.direito, valor);
     }
-     public No buscador(No atual, int valorProcurado) {
+
+    public No buscador(No atual, int valorProcurado) {
         if (atual == null || atual.valor.equals(valorProcurado)) {
             return atual;
         }
-        if ((Integer)atual.valor > valorProcurado) {
+        if ((Integer) atual.valor > valorProcurado) {
             return buscador(atual.esquerdo, valorProcurado);
         }
 
         return buscador(atual.direito, valorProcurado);
     }
 
-   /*
-   public int nivel(No<T> atual, T valor, int nivelAtual){
-        if(atual == null){
-            return -1;
-        } */ 
+    // T3 ALEST
 
+    public No adcionaNo(No atual, int valor) {
         
+        if(atual == null){
+            return new No(valor);
+        }
+        
+        if ((Integer) atual.valor > valor) {
+            atual.esquerdo = adcionaNo(atual.esquerdo, valor);
+        }else{
+            atual.direito = adcionaNo(atual.direito, valor);
+        }
+
+        return atual;
+
     }
-
-
+}
